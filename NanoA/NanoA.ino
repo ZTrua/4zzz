@@ -42,7 +42,7 @@ class DoorControl: public Carrage {
     bool doorIsOpen; 
     bool recievingOpenSignal;
     int address; 
-    double sequence; 
+    int8_t sequence = 255; 
     int doorPin; 
     int buttonPin; 
 
