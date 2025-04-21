@@ -6,27 +6,29 @@ class serMessage:
         pass
 
 class SerSend:
-    def __init__(self, serial, addr): 
+    def __init__(self, serial, addr, write): 
+        # serial is the serial object. write is the function that writes
         self.ser = serial
         self.addr = addr
+        self.write = write
 
     def stx(self): 
-        self.ser.write("start of text")
+        self.write("start of text")
 
     def addr(self, addr): 
-        self.ser.write(self.addr)
+        self.write(self.addr)
 
     def seq(self):
-        self.ser.write("seq")
+        self.write("seq")
     
     def etx(self): 
-        self.ser.write("end of text")
+        self.write("end of text")
 
     def send_data(self, message):
         self.stx() 
         self.addr() 
         self.seq() 
-        self.seq.write(message)
+        self.write(message)
         self.etx() 
 
 class SerGet: 
