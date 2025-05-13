@@ -1,5 +1,3 @@
-import serial
-import time 
 
 class serMessage:
     def __init__(self): 
@@ -15,8 +13,8 @@ class SerSend:
     def stx(self): 
         self.write("start of text")
 
-    def addr(self, addr): 
-        self.write(self.addr)
+    def addr(self): 
+        self.write("pico")
 
     def seq(self):
         self.write("seq")
@@ -28,7 +26,7 @@ class SerSend:
         self.stx() 
         self.addr() 
         self.seq() 
-        self.write(message)
+        self.write("message")
         self.etx() 
 
 class SerGet: 

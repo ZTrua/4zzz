@@ -1,6 +1,7 @@
 try:
-    import RPi.GPIO as GPIO
-    import serial
+    from machine import Pin, UART
+    
+    from piControl import SerSend
 except RuntimeError: 
     print("Error") 
 
@@ -8,6 +9,7 @@ import time
 
 ser = serial.Serial('/dev/ttyS0', 9600, timeout=1.0)
 ser.reset_input_buffer() 
+sent = SerSend(ser, "Rasp4", ser.write)
 print("Serial Ok") 
 
 try: 
